@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">YourPlus Достижения</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="authText1">Авторизация</string>
+    <string name="authText2">Логин: </string>
+    <string name="authText3">Пароль: </string>
+    <string name="authBtText">Вход</string>
+    <string name="title_activity_main">MainActivity</string>
+
+
+</resources>
