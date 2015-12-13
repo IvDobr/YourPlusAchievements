@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">YourPlus Достижения</string>
+    <string name="app_name">YourPlus</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -7,7 +7,30 @@
     <string name="authText2">Логин: </string>
     <string name="authText3">Пароль: </string>
     <string name="authBtText">Вход</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Загрузка</string>
+    <string name="title_activity_achieves">Достижения</string>
+    <string name="refreshBt">Обновить</string>
+    <string name="title_activity_see_achieve">Просмотр достижения</string>
+    <string name="title_activity_add_achieve">Добавление достижения</string>
+    <string name="title_activity_test">Тестовое активити</string>
+
+    <string name="title_section1">Лента достижений</string>
+    <string name="title_section2">Задать стипендию</string>
+    <string name="title_section3">Выход</string>
+
+    <string name="navigation_drawer_open">Открыть навигационную панель</string>
+    <string name="navigation_drawer_close">Закрыть навигационную панель</string>
+
+    <string name="action_add_achieve">Добавить достижение</string>
+
+    <string name="action_delete_achieve">Удалить</string>
+    <string name="action_edit_achieve">Редактировать</string>
+
+    <string name="action_refresh">Обновить</string>
+
+    <string name="action_stip">Задать стипендию</string>
+    <string name="action_set_server">Поменять сервер</string>
+    <string name="action_exit">Выход</string>
 
 
 </resources>

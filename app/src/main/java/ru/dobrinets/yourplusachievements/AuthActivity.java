@@ -1,10 +1,12 @@
 package ru.dobrinets.yourplusachievements;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -25,9 +27,11 @@ public class AuthActivity extends AppCompatActivity {
     private EditText login;
     private EditText password;
 
-    SharedPreferences preferences;
-    final static String COOKIE = "cookie";
+    static final String COOKIE = "cookie";
+    static final String WEB_SERVICE = "web_service";
     static final String APP_PREFERENCES = "app_settings";
+    SharedPreferences preferences;
+
 
     private class loginTask extends AsyncTask<String, Void, String> {
         @Override
@@ -35,6 +39,7 @@ public class AuthActivity extends AppCompatActivity {
             try {
                 return logInProc();
             } catch (IOException e) {
+                Log.e("Авторизация", e.toString());
                 return "e";
             }
         }
@@ -46,24 +51,25 @@ public class AuthActivity extends AppCompatActivity {
             } else if(result.equals("e")) {
                 Toast.makeText(getBaseContext(), "Ошибка :( Попробуйте еще раз", Toast.LENGTH_SHORT).show();
             } else if(!result.equals("")) {
+
                 preferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.putString(COOKIE, result);
                 editor.commit();
 
-                preferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE); //НАЧИНАЯ ОТСЮДА
-                String q = preferences.getString(COOKIE, "");
-                Toast.makeText(getBaseContext(), q, Toast.LENGTH_SHORT).show();
+                goToList();
             }
         }
     }
 
     private String logInProc() throws IOException {
-        String url = "http://192.168.0.104:9000/api/login";
+        preferences = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        String web = preferences.getString(WEB_SERVICE, "");
+
+        String url = web + "/login";
         HttpURLConnection conn = (HttpURLConnection) new URL(url).openConnection();
-        conn.setDoOutput(true);
-        conn.setDoInput(true);
         conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+        conn.setRequestMethod("POST");
 
         JSONObject auth = new JSONObject();
         try {
@@ -109,5 +115,11 @@ public class AuthActivity extends AppCompatActivity {
 
     public void onBtnClick(View v) {
         new loginTask().execute();
+    }
+
+    private void goToList(){
+        Intent intent = new Intent(this, AchievesActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 }
