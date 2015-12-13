@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     static final String COOKIE = "cookie";
     static final String WEB_SERVICE = "web_service";
-    static final String WEB_SERVICE_URL = "http://192.168.0.104:9000/api";
+    static String WEB_SERVICE_URL = "http://192.168.0.104:9000/api";
     static final String APP_PREFERENCES = "app_settings";
     SharedPreferences preferences;
 
